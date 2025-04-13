@@ -1,3 +1,55 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './index.css';
+
+/* Additional app-specific styles */
+.app-container {
+  @apply min-h-screen bg-background text-white;
+}
+
+.content-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Layout components */
+.sidebar {
+  @apply fixed inset-y-0 left-0 z-50 w-64 bg-paper border-r border-primary border-opacity-10;
+}
+
+.main-content {
+  @apply ml-64 p-8;
+}
+
+/* Card variations */
+.feature-card {
+  @apply glass-card p-6 rounded-xl hover:transform hover:scale-105 transition-transform;
+}
+
+.stats-card {
+  @apply glass-card p-4 rounded-lg flex items-center space-x-4;
+}
+
+/* Form elements */
+.input-field {
+  @apply bg-paper border border-primary border-opacity-20 rounded-lg px-4 py-2 focus:outline-none focus:border-primary;
+}
+
+.select-field {
+  @apply bg-paper border border-primary border-opacity-20 rounded-lg px-4 py-2 focus:outline-none focus:border-primary;
+}
+
+/* Animations */
+.hover-scale {
+  @apply transition-transform hover:scale-105;
+}
+
+.pulse {
+  @apply animate-pulse;
+}
+
+/* Loading states */
+.loading-overlay {
+  @apply absolute inset-0 bg-background bg-opacity-75 flex items-center justify-center;
+}
+
+.loading-spinner {
+  @apply w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin;
+}

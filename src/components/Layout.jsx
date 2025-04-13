@@ -1,18 +1,27 @@
 import React from 'react';
 import { Box, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, useTheme } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { Dashboard as DashboardIcon, Search as SearchIcon, Settings as SettingsIcon } from '@mui/icons-material';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { 
+  Dashboard as DashboardIcon,
+  Search as SearchIcon,
+  Tag as VanityIcon,
+  Extension as PuzzleIcon,
+  Settings as SettingsIcon 
+} from '@mui/icons-material';
 import { motion } from 'framer-motion';
 
 const drawerWidth = 240;
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const theme = useTheme();
 
   const menuItems = [
     { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
     { text: 'AI Finder', icon: <SearchIcon />, path: '/finder' },
+    { text: 'Vanity Address', icon: <VanityIcon />, path: '/vanity' },
+    { text: 'Puzzle Scanner', icon: <PuzzleIcon />, path: '/puzzle' },
     { text: 'Settings', icon: <SettingsIcon />, path: '/settings' },
   ];
 
@@ -50,6 +59,7 @@ const Layout = ({ children }) => {
           </motion.div>
         </Toolbar>
       </AppBar>
+
       <Drawer
         variant="permanent"
         sx={{
@@ -81,19 +91,21 @@ const Layout = ({ children }) => {
                     my: 0.5,
                     mx: 1,
                     borderRadius: 2,
+                    backgroundColor: location.pathname === item.path ? 'rgba(0, 247, 255, 0.1)' : 'transparent',
                     '&:hover': {
                       background: 'rgba(0, 247, 255, 0.1)',
                     },
                   }}
                 >
-                  <ListItemIcon sx={{ color: theme.palette.primary.main }}>
+                  <ListItemIcon sx={{ color: location.pathname === item.path ? theme.palette.primary.main : 'inherit' }}>
                     {item.icon}
                   </ListItemIcon>
                   <ListItemText
                     primary={item.text}
                     sx={{
                       '& .MuiListItemText-primary': {
-                        fontWeight: 500,
+                        fontWeight: location.pathname === item.path ? 600 : 500,
+                        color: location.pathname === item.path ? theme.palette.primary.main : 'inherit',
                       },
                     }}
                   />
@@ -103,6 +115,7 @@ const Layout = ({ children }) => {
           </List>
         </Box>
       </Drawer>
+
       <Box
         component="main"
         sx={{

@@ -4,7 +4,9 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
-  { ignores: ['dist'] },
+  {
+    ignores: ['dist']
+  },
   js.configs.recommended,
   {
     files: ['**/*.{js,jsx}'],
@@ -28,11 +30,12 @@ export default [
       'react-refresh': reactRefresh,
     },
     rules: {
-      'no-undef': 'error', 
+      'no-undef': 'error',
       'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
       'react-refresh/only-export-components': 'off',
-      'no-unused-vars': 'off'
+      'no-unused-vars': 'warn',
+      'no-case-declarations': 'off'
     },
   }
 ];

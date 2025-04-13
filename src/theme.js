@@ -37,6 +37,23 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          scrollbarWidth: 'thin',
+          '&::-webkit-scrollbar': {
+            width: '6px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: '#0a192f',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#00f7ff',
+            borderRadius: '3px',
+          },
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -59,6 +76,23 @@ export const theme = createTheme({
           backdropFilter: 'blur(10px)',
           border: '1px solid rgba(0, 247, 255, 0.1)',
           borderRadius: '16px',
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: 'rgba(0, 247, 255, 0.2)',
+            },
+            '&:hover fieldset': {
+              borderColor: 'rgba(0, 247, 255, 0.4)',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#00f7ff',
+            },
+          },
         },
       },
     },
